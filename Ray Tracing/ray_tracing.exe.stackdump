@@ -1,0 +1,7 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=0068CBE3
+eax=004050DA ebx=0068C9F4 ecx=0068C9DC edx=0068C9D0 esi=004013A4 edi=009E4A00
+ebp=0068C988 esp=0068C9A8 program=C:\Users\Julien\Documents\NetBeansProjects\Ray-Tracing\Ray Tracing\dist\Debug\Cygwin_1-Windows\ray_tracing.exe, pid 14060, thread main
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
+0068C988  0068CBE3 (0068C988, 0068CAB0, 0068C9F4, 0068C9D0)

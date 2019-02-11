@@ -1,6 +1,9 @@
+#pragma once
+
 #ifndef VEC3H
 #define VEC3H
 
+#include <ctime>
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
@@ -143,5 +146,11 @@ inline vec3& vec3::operator/=(const float t) {
 inline vec3 unit_vector(vec3 v) {
     return v / v.length();
 }
+/*
+inline vec3 reflect(const vec3& v, const vec3& n){
+    return v - 2*dot(v,n)*n;
+}
+*/
 
 #endif
+
