@@ -35,6 +35,7 @@ bool sphere::hit(const ray& r, float t_min, float t_max, hit_record& rec) const 
     return false;
 }
 
+//Retourne un point aléatoire de la spère unité (pour effet mat...)
 vec3 random_in_unit_sphere(){
     vec3 p;
     do{

@@ -10,6 +10,7 @@
 #include "camera.h"
 #include "material.h"
 
+//Objets monochromes
 /*
 bool hit_sphere(const vec3& center, float radius, const ray& r){
     vec3 oc = r.origin() - center;
@@ -20,6 +21,8 @@ bool hit_sphere(const vec3& center, float radius, const ray& r){
     return (discriminant > 0);
 }
 */
+
+//Premier shading (directionnel)
 /*
 float hit_sphere(const vec3& center, float radius, const ray& r){
         vec3 oc = r.origin() - center;
@@ -65,7 +68,7 @@ vec3 color(const ray& r, hitable *world, int depth){
             }
             //return 0.5*color( ray(rec.p, target - rec.p), world);
         }
-        else{
+        else{ //Sky (blue&white lerp)
             vec3 unit_direction = unit_vector(r.direction());
             float t = 0.5*(unit_direction.y() + 1.0);
             return (1.0-t)*vec3(1.0, 1.0, 1.0) + t*vec3(0.5, 0.7, 1.0);
@@ -85,13 +88,14 @@ int main(int argc, char** argv) {
     cout << "P3\n" << nx << " " << ny << "\n255\n" ;
     
     //World creation
-    hitable *list[4];
-    list[0] = new sphere(vec3(0, 0, -1), 0.5, new lambertian(vec3(0.8, 0.3, 0.3)));
+    hitable *list[5];
+    list[0] = new sphere(vec3(0, 0, -1), 0.5, new lambertian(vec3(0.1, 0.2, 0.5)));
     list[1] = new sphere(vec3(0, -100.5, -1), 100, new lambertian(vec3(0.8, 0.8, 0.0)));
-    list[2] = new sphere(vec3(1, 0, -1), 0.5f, new metal(vec3(0.8, 0.6, 0.2)));
-    list[3] = new sphere(vec3(1, 0, -1), 0.5f, new metal(vec3(0.8, 0.6, 0.2)));
-    hitable *world = new hitable_list(list, 4);
-    camera cam;
+    list[2] = new sphere(vec3(1, 0, -1), 0.5f, new metal(vec3(0.8, 0.6, 0.2), 0.3));
+    list[3] = new sphere(vec3(-1, 0, -1), 0.5f, new dielectric(1.5));
+    list[4] = new sphere(vec3(-1, 0, -1), -0.45f, new dielectric(1.5));
+    hitable *world = new hitable_list(list, 5);
+    camera cam(90, float(nx)/float(ny));
     
     float random;
     
